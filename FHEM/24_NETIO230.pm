@@ -133,8 +133,7 @@ sub NETIO230_sysCmds($)
 
   # expand %sysCmds dynamically for each defined socket
   # 'port wd X' => 'socketX_wd'
-  foreach my $socketNum (keys $hash->{SOCKETS}) {
-    my $num = $hash->{SOCKETS}[$socketNum];
+  foreach my $num ( @{$hash->{SOCKETS}} ) {
     $sysCmds{"port_wd_$num"} = "socket$num"."_wd";
     $sysCmds{"port_setup_$num"} = "socket$num"."_setup";
     $sysCmds{"port_timer_$num"."_dt"} = "socket$num"."_timer"; #label:date+time
